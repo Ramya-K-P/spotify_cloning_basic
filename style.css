@@ -91,6 +91,7 @@ ul li{
     width: 43px;
     margin: 0 23px;
     border-radius: 30px;
+    overflow: hidden;
 }
 .songlistcontainer{
     margin-top: 70px;
@@ -105,6 +106,9 @@ ul li{
     margin:30px;
     cursor: pointer;
     display: flex;
+    background-color: black;
+    color: white;
+    border-radius: 20px;
 }
 .songInfo{
     position: absolute;

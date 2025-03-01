@@ -6,15 +6,25 @@ let myProgressBar = document.getElementById('myProgressBar');
 const masterPlay = document.getElementById('masterPlay'); // Correct ID
 const gif = document.getElementById('gif'); // Define gif properly
 const audioElement = new Audio('songs/1.mp3'); // Ensure correct path
+let songItems=Array.from(document.getElementsByClassName("songItem"));
 
 let songs = [
-    {songName: "Salam-e-Ishq", filePath: "songs/1.mp3", coverPath: "covers/1.jpg"},
-    {songName: "Salam-e-Ishq", filePath: "songs/2.mp3", coverPath: "covers/2.jpg"},
-    {songName: "Salam-e-Ishq", filePath: "songs/3.mp3", coverPath: "covers/3.jpg"},
-    {songName: "Salam-e-Ishq", filePath: "songs/4.mp3", coverPath: "covers/4.jpg"},
-    {songName: "Salam-e-Ishq", filePath: "songs/5.mp3", coverPath: "covers/5.jpg"},
-    {songName: "Salam-e-Ishq", filePath: "songs/6.mp3", coverPath: "covers/6.jpg"}
+    {songName: "Gardens - Stylish Chill", filePath: "songs/1.mp3", coverPath: "covers/1.jpeg"},
+    {songName: "alone", filePath: "songs/2.mp3", coverPath: "covers/2.jpeg"},
+    {songName: "Spinning Head", filePath: "songs/3.mp3", coverPath: "covers/3.jpeg"},
+    {songName: "Lost in Dreams", filePath: "songs/4.mp3", coverPath: "covers/4.jpeg"},
+    {songName: "Stylish Deep Electronic", filePath: "songs/5.mp3", coverPath: "covers/5.jpeg"},
+    {songName: "Showreel Music", filePath: "songs/6.mp3", coverPath: "covers/6.jpeg"},
+    {songName: "Tell Me The Truth", filePath: "songs/7.mp3", coverPath: "covers/7.jpeg"},
+    {songName: "Soulsweeper", filePath: "songs/8.mp3", coverPath: "covers/8.jpeg"},
+    {songName: "Night Detective", filePath: "songs/9.mp3", coverPath: "covers/9.jpeg"},
+    {songName: "AMALGAM", filePath: "songs/10.mp3", coverPath: "covers/10.jpeg"}
 ];
+songItems.forEach((element, i) => {
+    element.getElementsByTagName('img')[0].src = songs[i].coverPath; 
+    element.getElementsByClassName('songName')[0].innerText = songs[i].songName;
+});
+
 
 // Handle play/pause click
 masterPlay.addEventListener('click', () => {
@@ -35,8 +45,17 @@ masterPlay.addEventListener('click', () => {
 
 // Listen to events
 audioElement.addEventListener('timeupdate', () => {
-    console.log('timeupdate');
     //update seek bar
     progress=parseInt((audioElement.currentTime/audioElement.duration)*100);
-    console.log(progress)
+    myProgressBar.value=progress;
 });
+myProgressBar.addEventListener('change',()=>{
+    audioElement.currentTime=(myProgressBar.value*audioElement.duration)/100;
+})
+Array.from(document.getElementsByClassName('timestamp')).forEach((element)=>{
+    document.addEventListener('click',(e)=>{
+        console.log(e.target);
+        // e.target.
+    })
+})
+
